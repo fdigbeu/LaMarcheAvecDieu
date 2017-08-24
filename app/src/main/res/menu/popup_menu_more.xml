@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_continuer_lecture"
+        android:title="@string/lb_continuer_lecture"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_partager_appli"
+        android:title="@string/lb_partager_appli"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_verifier_update"
+        android:title="@string/lb_verifier_update"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_modifier_parametre"
+        android:title="@string/lb_modifier_parametre"
+        app:showAsAction="always"/>
+</menu>
+
+

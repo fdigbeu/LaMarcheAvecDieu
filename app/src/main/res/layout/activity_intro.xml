@@ -5,11 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/header"
     tools:context="lveapp.fr.lamarcheavecdieu.View.Activities.IntroActivity">
 
     <WebView
-        android:id="@+id/intro"
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scrollbars="none"/>
 
 </RelativeLayout>
