@@ -25,6 +25,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_1"/>
         </android.support.v7.widget.CardView>
 
@@ -39,6 +41,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_2"/>
         </android.support.v7.widget.CardView>
 
@@ -53,6 +57,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_3"/>
         </android.support.v7.widget.CardView>
 
@@ -69,6 +75,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_4"/>
         </android.support.v7.widget.CardView>
 
@@ -85,6 +93,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_5"/>
         </android.support.v7.widget.CardView>
 
@@ -101,6 +111,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_6"/>
         </android.support.v7.widget.CardView>
 
@@ -117,6 +129,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_7"/>
         </android.support.v7.widget.CardView>
 
@@ -131,6 +145,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_8"/>
         </android.support.v7.widget.CardView>
 
@@ -147,6 +163,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_9"/>
         </android.support.v7.widget.CardView>
 
@@ -163,6 +181,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_10"/>
         </android.support.v7.widget.CardView>
 
@@ -177,6 +197,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_11"/>
         </android.support.v7.widget.CardView>
 
@@ -191,6 +213,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_12"/>
         </android.support.v7.widget.CardView>
 
@@ -205,6 +229,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_13"/>
         </android.support.v7.widget.CardView>
 
@@ -219,6 +245,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_14"/>
         </android.support.v7.widget.CardView>
 
@@ -235,6 +263,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_15"/>
         </android.support.v7.widget.CardView>
 
@@ -251,6 +281,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_16"/>
         </android.support.v7.widget.CardView>
 
@@ -267,6 +299,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_17"/>
         </android.support.v7.widget.CardView>
 
@@ -283,6 +317,8 @@
                 android:paddingTop="@dimen/text_margin"
                 android:paddingRight="@dimen/text_margin"
                 android:paddingBottom="@dimen/text_margin"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_18"/>
         </android.support.v7.widget.CardView>
 
@@ -297,6 +333,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/text_margin"
                 android:textStyle="bold"
+                android:clickable="true"
+                android:background="@drawable/cardview_clicked"
                 android:text="@string/lb_sommaire_item_19"/>
         </android.support.v7.widget.CardView>
 
