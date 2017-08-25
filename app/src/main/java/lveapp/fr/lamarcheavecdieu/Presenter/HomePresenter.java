@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.Hashtable;
+
 import lveapp.fr.lamarcheavecdieu.R;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.HomeInterface.IHomeActivity;
 
