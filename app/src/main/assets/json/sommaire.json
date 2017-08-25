@@ -1,0 +1,109 @@
+﻿[
+  {
+    "titre": "INTRODUCTION",
+    "titreNumero": "",
+    "titreKeycode": "3483480362",
+    "soustitre": []
+  },
+  {
+    "titre": "LES TROIS TYPES D'HOMMES",
+    "titreNumero": "I.",
+    "titreKeycode": "3a77605a10",
+    "soustitre": []
+  },
+  {
+    "titre": "LA MARCHE",
+    "titreNumero": "II.",
+    "titreKeycode": "e357ca6c85",
+    "soustitre": [
+      {
+        "sousTitreKeyCode": "53e7aacf0f",
+        "sousTitreValue": "Les trois étapes de la vie d'un marcheur",
+        "sousTitreNumero": "1)"
+      },
+      {
+        "sousTitreKeyCode": "a4a3bb244f",
+        "sousTitreValue": "La marche des Hébreux après leur sortie d'Égypte",
+        "sousTitreNumero": "2)"
+      },
+      {
+        "sousTitreKeyCode": "8b7fddada0",
+        "sousTitreValue": "Le marcheur dans le Tabernacle",
+        "sousTitreNumero": "3)"
+      },
+      {
+        "sousTitreKeyCode": "308f5ac886",
+        "sousTitreValue": "La marche d'Ezéchiel dans le sanctuaire céleste",
+        "sousTitreNumero": "4)"
+      }
+    ]
+  },
+  {
+    "titre": "LA VOIE DU PÉCHEUR : LE CHEMIN SPACIEUX",
+    "titreNumero": "III.",
+    "titreKeycode": "ee83717fde",
+    "soustitre": [
+      {
+        "sousTitreKeyCode": "326bf340f0",
+        "sousTitreValue": "La voie de Caïn et l'égarement de Balaam",
+        "sousTitreNumero": "1)"
+      },
+      {
+        "sousTitreKeyCode": "f54f7aacb4",
+        "sousTitreValue": "L'ivraie : les mauvaises compagnies",
+        "sousTitreNumero": "2)"
+      }
+    ]
+  },
+  {
+    "titre": "L'ASSEMBLÉE DES MOQUEURS",
+    "titreNumero": "IV.",
+    "titreKeycode": "98be77822b",
+    "soustitre": []
+  },
+  {
+    "titre": "LE CONSEIL DES MÉCHANTS",
+    "titreNumero": "V.",
+    "titreKeycode": "a65f3dfdea",
+    "soustitre": []
+  },
+  {
+    "titre": "LA PORTE ETROITE ET LE CHEMIN RESSERÉ",
+    "titreNumero": "VI.",
+    "titreKeycode": "9941547802",
+    "soustitre": []
+  },
+  {
+    "titre": "LE CONSEIL DE DIEU",
+    "titreNumero": "VII.",
+    "titreKeycode": "3a955eb27c",
+    "soustitre": [
+      {
+        "sousTitreKeyCode": "91c4fe0d35",
+        "sousTitreValue": "Mettre la Parole de Dieu en pratique",
+        "sousTitreNumero": "1)"
+      },
+      {
+        "sousTitreKeyCode": "10a6ea8869",
+        "sousTitreValue": "Marcher selon l'Esprit",
+        "sousTitreNumero": "2)"
+      },
+      {
+        "sousTitreKeyCode": "713ea2b7d6",
+        "sousTitreValue": "Se revêtir de l'armure du combattant",
+        "sousTitreNumero": "3)"
+      },
+      {
+        "sousTitreKeyCode": "ef01d52a8e",
+        "sousTitreValue": "Oublier le passé",
+        "sousTitreNumero": "4)"
+      }
+    ]
+  },
+  {
+    "titre": "CONCLUSION",
+    "titreNumero": "",
+    "titreKeycode": "ab3a669d46",
+    "soustitre": []
+  }
+]
