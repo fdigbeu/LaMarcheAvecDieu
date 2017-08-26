@@ -13,7 +13,7 @@ public class IntroInterface {
         /**
          * Identify all widgets
          */
-        public void findWidgetsById();
+        public void findWidgetsAndSetEvents();
 
         /**
          * Display image into the webview

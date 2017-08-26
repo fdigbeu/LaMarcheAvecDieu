@@ -22,7 +22,7 @@ public class IntroPresenter {
     // Load intro data
     public void loadIntroData(Context context){
         this.context = context;
-        iIntroActivity.findWidgetsById();
+        iIntroActivity.findWidgetsAndSetEvents();
         iIntroActivity.displayImageToWebView();
         iIntroActivity.showHomeActivity();
     }

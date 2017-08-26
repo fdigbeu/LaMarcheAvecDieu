@@ -25,4 +25,8 @@
     <string name="lb_sommaire_item_17">3) Se revêtir de l\'armure du combattant</string>
     <string name="lb_sommaire_item_18">4) Oublier le passé</string>
     <string name="lb_sommaire_item_19">CONCLUSION</string>
+    <string name="title_activity_reading">La Marche Avec Dieu</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

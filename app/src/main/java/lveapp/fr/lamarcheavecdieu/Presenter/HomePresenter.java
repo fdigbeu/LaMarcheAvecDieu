@@ -1,11 +1,11 @@
 package lveapp.fr.lamarcheavecdieu.Presenter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.Hashtable;
-
+import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.R;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.HomeInterface.IHomeActivity;
 
@@ -23,8 +23,7 @@ public class HomePresenter {
 
     public void loadHomeData(Context context){
         this.context = context;
-        iHomeActivity.findWidgetsById();
-        iHomeActivity.setWidgetsEvents();
+        iHomeActivity.findWidgetsAndSetEvents();
     }
 
     /**
@@ -33,8 +32,21 @@ public class HomePresenter {
      */
     public void retrieveUserAction(View view){
         switch (view.getId()){
+            // If menu more is selected
             case R.id.fab_menu_more:
                 iHomeActivity.displayMenuMoreItem(view);
+                break;
+            // If summary item is selected
+            default:
+                String titleKeyCode = CommonPresenter.getKeyCodeByViewId(view.getId());
+                Log.i("TAG_TITLE_KEY_CODE", titleKeyCode);
+                Summary summary = CommonPresenter.getSummaryTitleInfos(context, titleKeyCode);
+                if(summary != null){
+                    Log.i("TAG_TITLE_KEY_CODE", "summary_title_key_code = "+summary.getTitleKeyCode());
+                    Log.i("TAG_TITLE_KEY_CODE", "summary_title = "+summary.getTitle());
+                    Log.i("TAG_TITLE_KEY_CODE", "summary_title_number = "+summary.getTitleNumber());
+                    iHomeActivity.displayReadingActivity();
+                }
                 break;
         }
     }
@@ -46,15 +58,19 @@ public class HomePresenter {
     public void retrieveUserAction(MenuItem item){
         switch (item.getItemId()){
             case R.id.action_continuer_lecture:
+                Log.i("TAG_MENU_MORE", "action_continuer_lecture");
                 break;
 
             case R.id.action_partager_appli:
+                Log.i("TAG_MENU_MORE", "action_partager_appli");
                 break;
 
             case R.id.action_verifier_update:
+                Log.i("TAG_MENU_MORE", "action_verifier_update");
                 break;
 
             case R.id.action_modifier_parametre:
+                Log.i("TAG_MENU_MORE", "action_modifier_parametre");
                 break;
         }
     }

@@ -21,6 +21,10 @@
         <activity
             android:name=".View.Activities.HomeActivity"
             android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Activities.ReadingActivity"
+            android:label="@string/title_activity_reading"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

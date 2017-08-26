@@ -15,16 +15,14 @@ public class HomeInterface {
         /**
          * Identify all widgets
          */
-        public void findWidgetsById();
-        /**
-         * Set all widgets events
-         */
-        public void setWidgetsEvents();
+        public void findWidgetsAndSetEvents();
 
         /**
          * Display menu more item
          * @param view
          */
         public void displayMenuMoreItem(View view);
+
+        public void displayReadingActivity();
     }
 }

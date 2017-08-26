@@ -31,7 +31,7 @@ public class IntroActivity extends Activity implements IIntroActivity{
     }
 
     @Override
-    public void findWidgetsById() {
+    public void findWidgetsAndSetEvents() {
         webView = findViewById(R.id.webView);
     }
 

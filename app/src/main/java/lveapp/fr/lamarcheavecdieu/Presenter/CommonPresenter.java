@@ -67,6 +67,35 @@ public class CommonPresenter {
     }
 
     /**
+     * Get summary title information by "titleKeyCode"
+     * @param context
+     * @return
+     */
+    public static Summary getSummaryTitleInfos(Context context, String titleKeyCode){
+        Summary summary = null;
+        String srcFichier = "json/summary.json";
+        try
+        {
+            JSONArray jsonArray = new JSONArray(loadJSONFromAsset(context, srcFichier));
+            for(int i = 0; i < jsonArray.length(); i++)
+            {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String titre = jsonObject.getString("titre");
+                String titreNumero = jsonObject.getString("titreNumero");
+                String titreKeycode = jsonObject.getString("titreKeycode");
+                if(titleKeyCode.equalsIgnoreCase(titreKeycode)){
+                    summary = new Summary(titre, titreKeycode, titreNumero);
+                }
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return summary;
+    }
+
+    /**
      * Get list of all summary subtitle by summary title keycode
      * @param context
      * @return
