@@ -3,13 +3,14 @@ package lveapp.fr.lamarcheavecdieu.Presenter;
 import android.content.Context;
 import android.os.CountDownTimer;
 
+import lveapp.fr.lamarcheavecdieu.View.Interfaces.IntroInterface.IIntroPresenter;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.IntroInterface.IIntroActivity;
 
 /**
  * Created by Maranatha on 24/08/2017.
  */
 
-public class IntroPresenter {
+public class IntroPresenter implements IIntroPresenter {
     // Attributs
     private IIntroActivity iIntroActivity;
     private Context context;

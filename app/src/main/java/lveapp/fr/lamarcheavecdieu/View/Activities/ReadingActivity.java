@@ -13,43 +13,37 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
+import lveapp.fr.lamarcheavecdieu.Presenter.CommonPresenter;
+import lveapp.fr.lamarcheavecdieu.Presenter.ReadingPresenter;
 import lveapp.fr.lamarcheavecdieu.R;
+import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActivity;
 
 public class ReadingActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements IReadingActivity /*, NavigationView.OnNavigationItemSelectedListener*/ {
 
     private Toolbar toolbar;
+    private FloatingActionButton fab;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle toggle;
+    private ReadingPresenter readingPresenter;
+    private ArrayList<View> listOfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
+        readingPresenter = new ReadingPresenter(this);
+        readingPresenter.loadReadingData(ReadingActivity.this);
         //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -79,13 +73,13 @@ public class ReadingActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    /*@SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        /*if (id == R.id.nav_camera) {
+        if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -97,10 +91,45 @@ public class ReadingActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }*/
+        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }*/
+
+    @Override
+    public void findWidgetsAndSetEvents() {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        
+        //--
+        listOfView = new ArrayList<>();
+        for (int i = 0; i< CommonPresenter.getSummaryTextId().length; i++){
+            listOfView.add(i, findViewById(CommonPresenter.getSummaryTextId()[i]));
+            listOfView.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    readingPresenter.retrieveUserAction(listOfView, view);
+                }
+            });
+        }
     }
 }

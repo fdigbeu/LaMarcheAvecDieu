@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import lveapp.fr.lamarcheavecdieu.Presenter.CommonPresenter;
 import lveapp.fr.lamarcheavecdieu.Presenter.HomePresenter;
 import lveapp.fr.lamarcheavecdieu.R;
@@ -22,10 +24,7 @@ public class HomeActivity extends AppCompatActivity implements IHomeActivity {
     private FloatingActionButton fabMenuMore;
     private Toolbar toolbar;
     private HomePresenter homePresenter;
-    private final int[] summaryTextId = {R.id.title_t1, R.id.title_t2, R.id.title_t3, R.id.title_t4,
-            R.id.title_t5, R.id.title_t6, R.id.title_t7, R.id.title_t8, R.id.title_t9,
-            R.id.subtitle_t1, R.id.subtitle_t2, R.id.subtitle_t3, R.id.subtitle_t4, R.id.subtitle_t5,
-            R.id.subtitle_t6, R.id.subtitle_t7, R.id.subtitle_t8, R.id.subtitle_t9, R.id.subtitle_t10};
+    private ArrayList<View> listOfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +44,17 @@ public class HomeActivity extends AppCompatActivity implements IHomeActivity {
         fabMenuMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                homePresenter.retrieveUserAction(view);
+                homePresenter.retrieveUserAction(null, view);
             }
         });
         //--
-        for (int i=0; i<summaryTextId.length; i++){
-            findViewById(summaryTextId[i]).setOnClickListener(new View.OnClickListener() {
+        listOfView = new ArrayList<>();
+        for (int i=0; i<CommonPresenter.getSummaryTextId().length; i++){
+            listOfView.add(i, findViewById(CommonPresenter.getSummaryTextId()[i]));
+            listOfView.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    homePresenter.retrieveUserAction(view);
+                    homePresenter.retrieveUserAction(listOfView, view);
                 }
             });
         }
@@ -75,8 +76,9 @@ public class HomeActivity extends AppCompatActivity implements IHomeActivity {
     }
 
     @Override
-    public void displayReadingActivity() {
+    public void displayReadingActivity(String keyCode) {
         Intent intent = new Intent(HomeActivity.this, ReadingActivity.class);
+        intent.putExtra("keyCode", keyCode);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

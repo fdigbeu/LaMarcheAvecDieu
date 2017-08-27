@@ -1,6 +1,7 @@
 package lveapp.fr.lamarcheavecdieu.Presenter;
 
 import android.content.Context;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,8 +20,17 @@ import lveapp.fr.lamarcheavecdieu.R;
  */
 
 public class CommonPresenter {
+
+    /**
+     * Menu Summary text id
+     */
+    private static final int[] summaryTextId = {R.id.title_t1, R.id.title_t2, R.id.title_t3, R.id.title_t4,
+            R.id.title_t5, R.id.title_t6, R.id.title_t7, R.id.title_t8, R.id.title_t9,
+            R.id.subtitle_t1, R.id.subtitle_t2, R.id.subtitle_t3, R.id.subtitle_t4, R.id.subtitle_t5,
+            R.id.subtitle_t6, R.id.subtitle_t7, R.id.subtitle_t8, R.id.subtitle_t9, R.id.subtitle_t10};
     /**
      * Get summary titleKeyCode or subtitleKeyCode by view id
+     * Each subtitleKeyCode is bind by his titleKeyCode like this : "titleKeyCode_subtitleKeyCode"
      * @param viewId
      * @return
      */
@@ -30,12 +40,12 @@ public class CommonPresenter {
         listKeyValue.put(R.id.title_t3, "e357ca6c85");listKeyValue.put(R.id.title_t4, "ee83717fde");
         listKeyValue.put(R.id.title_t5, "98be77822b");listKeyValue.put(R.id.title_t6, "a65f3dfdea");
         listKeyValue.put(R.id.title_t7, "9941547802");listKeyValue.put(R.id.title_t8, "3a955eb27c");
-        listKeyValue.put(R.id.title_t9, "ab3a669d46");listKeyValue.put(R.id.subtitle_t1, "53e7aacf0f");
-        listKeyValue.put(R.id.subtitle_t2, "a4a3bb244f");listKeyValue.put(R.id.subtitle_t3, "8b7fddada0");
-        listKeyValue.put(R.id.subtitle_t4, "308f5ac886");listKeyValue.put(R.id.subtitle_t5, "326bf340f0");
-        listKeyValue.put(R.id.subtitle_t6, "f54f7aacb4");listKeyValue.put(R.id.subtitle_t7, "91c4fe0d35");
-        listKeyValue.put(R.id.subtitle_t8, "10a6ea8869");listKeyValue.put(R.id.subtitle_t9, "713ea2b7d6");
-        listKeyValue.put(R.id.subtitle_t10, "ef01d52a8e");
+        listKeyValue.put(R.id.title_t9, "ab3a669d46");listKeyValue.put(R.id.subtitle_t1, "e357ca6c85_53e7aacf0f");
+        listKeyValue.put(R.id.subtitle_t2, "e357ca6c85_a4a3bb244f");listKeyValue.put(R.id.subtitle_t3, "e357ca6c85_8b7fddada0");
+        listKeyValue.put(R.id.subtitle_t4, "e357ca6c85_308f5ac886");listKeyValue.put(R.id.subtitle_t5, "ee83717fde_326bf340f0");
+        listKeyValue.put(R.id.subtitle_t6, "ee83717fde_f54f7aacb4");listKeyValue.put(R.id.subtitle_t7, "3a955eb27c_91c4fe0d35");
+        listKeyValue.put(R.id.subtitle_t8, "3a955eb27c_10a6ea8869");listKeyValue.put(R.id.subtitle_t9, "3a955eb27c_713ea2b7d6");
+        listKeyValue.put(R.id.subtitle_t10, "3a955eb27c_ef01d52a8e");
         return listKeyValue.containsKey(viewId) ? listKeyValue.get(viewId) : null;
     }
 
@@ -152,5 +162,25 @@ public class CommonPresenter {
             return null;
         }
         return json;
+    }
+
+    /**
+     * Change view of the summary item selected
+     * @param listOfView
+     * @param selectedView
+     */
+    public static void selectThisSummaryItem(ArrayList<View> listOfView, View selectedView){
+        for (int i=0; i<listOfView.size(); i++){
+            if(listOfView.get(i).getId() == selectedView.getId()){
+                selectedView.setBackgroundResource(R.drawable.cardview_item_clicked);
+            }
+            else{
+                listOfView.get(i).setBackgroundResource(R.drawable.cardview_item);
+            }
+        }
+    }
+
+    public static int[] getSummaryTextId() {
+        return summaryTextId;
     }
 }

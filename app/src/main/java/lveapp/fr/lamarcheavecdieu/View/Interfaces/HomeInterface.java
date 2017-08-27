@@ -23,6 +23,6 @@ public class HomeInterface {
          */
         public void displayMenuMoreItem(View view);
 
-        public void displayReadingActivity();
+        public void displayReadingActivity(String keyCode);
     }
 }
