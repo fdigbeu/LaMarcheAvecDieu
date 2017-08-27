@@ -6,6 +6,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.R;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActivity;
 
@@ -24,6 +25,9 @@ public class ReadingPresenter {
     public void loadReadingData(Context context){
         this.context = context;
         iReadingActivity.findWidgetsAndSetEvents();
+        //--
+        ArrayList<Summary> SummaryItems = CommonPresenter.getSummaryTitleAndSubTitleList(context);
+        iReadingActivity.displaySummaryContent(SummaryItems);
     }
 
 
@@ -35,11 +39,12 @@ public class ReadingPresenter {
         switch (view.getId()){
             // If summary item is selected
             default:
-                String titleKeyCode = CommonPresenter.getKeyCodeByViewId(view.getId());
+                /*String titleKeyCode = CommonPresenter.getKeyCodeByViewId(view.getId());
                 Log.i("TAG_TITLE_KEY_CODE", titleKeyCode);
                 if(listOfView != null){
                     CommonPresenter.selectThisSummaryItem(listOfView, view);
-                }
+                }*/
+                //=============================
                 /*Summary summary = CommonPresenter.getSummaryTitleInfos(context, titleKeyCode);
                 if(summary != null){
                     Log.i("TAG_TITLE_KEY_CODE", "summary_title_key_code = "+summary.getTitleKeyCode());

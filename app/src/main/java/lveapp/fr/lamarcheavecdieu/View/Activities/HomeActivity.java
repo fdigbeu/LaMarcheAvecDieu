@@ -1,6 +1,7 @@
 package lveapp.fr.lamarcheavecdieu.View.Activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,7 @@ public class HomeActivity extends AppCompatActivity implements IHomeActivity {
     private FloatingActionButton fabMenuMore;
     private Toolbar toolbar;
     private HomePresenter homePresenter;
-    private ArrayList<View> listOfView;
+    private ArrayList<TextView> listOfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,12 @@ public class HomeActivity extends AppCompatActivity implements IHomeActivity {
         });
         //--
         listOfView = new ArrayList<>();
+        //--
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/Garamond_Premier_Pro.ttf");
+        //--
         for (int i=0; i<CommonPresenter.getSummaryTextId().length; i++){
-            listOfView.add(i, findViewById(CommonPresenter.getSummaryTextId()[i]));
+            listOfView.add(i, (TextView) findViewById(CommonPresenter.getSummaryTextId()[i]));
+            listOfView.get(i).setTypeface(font);
             listOfView.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

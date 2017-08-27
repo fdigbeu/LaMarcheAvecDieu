@@ -3,6 +3,8 @@ package lveapp.fr.lamarcheavecdieu.View.Activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,20 +17,22 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
+import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.Presenter.CommonPresenter;
 import lveapp.fr.lamarcheavecdieu.Presenter.ReadingPresenter;
 import lveapp.fr.lamarcheavecdieu.R;
+import lveapp.fr.lamarcheavecdieu.View.Adapters.SummaryItemsAdapter;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActivity;
 
 public class ReadingActivity extends AppCompatActivity
-        implements IReadingActivity /*, NavigationView.OnNavigationItemSelectedListener*/ {
+        implements IReadingActivity {
 
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private ReadingPresenter readingPresenter;
-    private ArrayList<View> listOfView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +41,10 @@ public class ReadingActivity extends AppCompatActivity
 
         readingPresenter = new ReadingPresenter(this);
         readingPresenter.loadReadingData(ReadingActivity.this);
-        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -53,19 +54,14 @@ public class ReadingActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.reading, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -121,15 +117,16 @@ public class ReadingActivity extends AppCompatActivity
         toggle.syncState();
         
         //--
-        listOfView = new ArrayList<>();
-        for (int i = 0; i< CommonPresenter.getSummaryTextId().length; i++){
-            listOfView.add(i, findViewById(CommonPresenter.getSummaryTextId()[i]));
-            listOfView.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    readingPresenter.retrieveUserAction(listOfView, view);
-                }
-            });
-        }
+        recyclerView=(RecyclerView)findViewById(R.id.menu_summary);
+    }
+
+    @Override
+    public void displaySummaryContent(ArrayList<Summary> summaryItems) {
+        GridLayoutManager gridLayout = new GridLayoutManager(ReadingActivity.this, 1);
+        recyclerView.setLayoutManager(gridLayout);
+        recyclerView.setHasFixedSize(true);
+
+        SummaryItemsAdapter mAdapter = new SummaryItemsAdapter(ReadingActivity.this, summaryItems, drawer);
+        recyclerView.setAdapter(mAdapter);
     }
 }

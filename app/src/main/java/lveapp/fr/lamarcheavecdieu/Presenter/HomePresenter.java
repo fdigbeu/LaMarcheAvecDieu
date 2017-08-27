@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class HomePresenter implements IHomePresenter {
      * Retrieve event of user action
      * @param view
      */
-    public void retrieveUserAction(ArrayList<View> listOfView, View view){
+    public void retrieveUserAction(ArrayList<TextView> listOfView, View view){
         switch (view.getId()){
             // If menu more is selected
             case R.id.fab_menu_more:

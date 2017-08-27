@@ -2,6 +2,7 @@ package lveapp.fr.lamarcheavecdieu.Presenter;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +60,9 @@ public class CommonPresenter {
         String srcFichier = "json/summary.json";
         try
         {
+            // Add header info
+            mList.add(new Summary("", "_header_", ""));
+            //--
             JSONArray jsonArray = new JSONArray(loadJSONFromAsset(context, srcFichier));
             for(int i = 0; i < jsonArray.length(); i++)
             {
@@ -66,6 +70,7 @@ public class CommonPresenter {
                 String titre = jsonObject.getString("titre");
                 String titreNumero = jsonObject.getString("titreNumero");
                 String titreKeycode = jsonObject.getString("titreKeycode");
+                //--
                 mList.add(new Summary(titre, titreKeycode, titreNumero));
             }
         }
@@ -140,6 +145,49 @@ public class CommonPresenter {
     }
 
     /**
+     * Get list of summary title and summary subtitle
+     * @param context
+     * @return
+     */
+    public static ArrayList<Summary> getSummaryTitleAndSubTitleList(Context context){
+        ArrayList<Summary> mList = new ArrayList<>();
+        String srcFichier = "json/summary.json";
+        try
+        {
+            // Add header info
+            mList.add(new Summary("", "_header_", ""));
+            //--
+            JSONArray jsonArray = new JSONArray(loadJSONFromAsset(context, srcFichier));
+            for(int i = 0; i < jsonArray.length(); i++)
+            {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String titre = jsonObject.getString("titre");
+                String titreNumero = jsonObject.getString("titreNumero");
+                String titreKeycode = jsonObject.getString("titreKeycode");
+                //--
+                mList.add(new Summary(titre, titreKeycode, titreNumero));
+                //--
+                JSONArray jsonFilsArray = new JSONArray(jsonObject.getString("soustitre"));
+                if(jsonFilsArray.length() > 0){
+                    for(int j = 0; j < jsonFilsArray.length(); j++){
+                        JSONObject jsonFilsObject = jsonFilsArray.getJSONObject(j);
+                        String sousTitreValue = jsonFilsObject.getString("sousTitreValue");
+                        String sousTitreNumero = jsonFilsObject.getString("sousTitreNumero");
+                        String sousTitreKeyCode = jsonFilsObject.getString("sousTitreKeyCode");
+                        mList.add(new Summary(sousTitreValue, sousTitreKeyCode, sousTitreNumero));
+                    }
+                }
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return mList;
+    }
+
+
+    /**
      * Load json file from asset folder
      * @param context
      * @param srcFichier
@@ -169,7 +217,7 @@ public class CommonPresenter {
      * @param listOfView
      * @param selectedView
      */
-    public static void selectThisSummaryItem(ArrayList<View> listOfView, View selectedView){
+    public static void selectThisSummaryItem(ArrayList<TextView> listOfView, View selectedView){
         for (int i=0; i<listOfView.size(); i++){
             if(listOfView.get(i).getId() == selectedView.getId()){
                 selectedView.setBackgroundResource(R.drawable.cardview_item_clicked);
