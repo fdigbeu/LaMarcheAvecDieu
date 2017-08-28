@@ -1,5 +1,6 @@
 package lveapp.fr.lamarcheavecdieu.View.Activities;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActiv
 public class ReadingActivity extends AppCompatActivity
         implements IReadingActivity {
 
+    private TextView headerTitle;
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawer;
@@ -97,9 +100,14 @@ public class ReadingActivity extends AppCompatActivity
     @Override
     public void findWidgetsAndSetEvents() {
 
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/Garamond_Premier_Pro.ttf");
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
+
+        headerTitle = (TextView)findViewById(R.id.app_bar_title_textView);
+        headerTitle.setTypeface(font);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
