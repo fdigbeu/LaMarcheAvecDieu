@@ -24,7 +24,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/title_activity_reading"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/default_text_size" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
