@@ -6,6 +6,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import lveapp.fr.lamarcheavecdieu.Model.Content;
 import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.R;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActivity;
@@ -25,9 +26,12 @@ public class ReadingPresenter {
     public void loadReadingData(Context context){
         this.context = context;
         iReadingActivity.findWidgetsAndSetEvents();
-        //--
+        // Get Summury title and Summary subtitle list
         ArrayList<Summary> SummaryItems = CommonPresenter.getSummaryTitleAndSubTitleList(context);
         iReadingActivity.displaySummaryContent(SummaryItems);
+        // Display all book content
+        ArrayList<Content> contentItems = CommonPresenter.getContentList(context);
+        iReadingActivity.displayBookContent(contentItems);
     }
 
 

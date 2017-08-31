@@ -1,6 +1,7 @@
 package lveapp.fr.lamarcheavecdieu.Presenter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import lveapp.fr.lamarcheavecdieu.Model.Common;
+import lveapp.fr.lamarcheavecdieu.Model.Content;
 import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.R;
 
@@ -226,6 +229,109 @@ public class CommonPresenter {
                 listOfView.get(i).setBackgroundResource(R.drawable.cardview_item);
             }
         }
+    }
+
+
+    /**
+     * Get All Content list
+     * @param context
+     * @return
+     */
+    public static ArrayList<Content> getContentList(Context context){
+        ArrayList<Content> mList = new ArrayList<>();
+
+        String srcFichier = "json/summary.json";
+        //--
+        String titleNumber = null;
+        String titleValue = null;
+        String titleKeyCode = null;
+        String titleDetail = null;
+        String subTitleNumber = null;
+        String subTitleValue = null;
+        String subTitleKeyCode = null;
+        String subTitleDetail = null;
+        String typeContent;
+        //--
+        try
+        {
+            JSONArray jsonArray = new JSONArray(loadJSONFromAsset(context, srcFichier));
+            ArrayList<String> mListContent = null;
+            for(int i = 0; i < jsonArray.length(); i++)
+            {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                titleValue = jsonObject.getString("titre");
+                titleNumber = jsonObject.getString("titreNumero");
+                titleKeyCode = jsonObject.getString("titreKeycode");
+                typeContent = "SUMMARY_TITLE";
+                //--
+                mList.add(new Content(titleNumber, titleValue, titleKeyCode, titleDetail, subTitleNumber, subTitleValue, subTitleKeyCode, subTitleDetail, typeContent));
+                //--
+                /*mListContent = getContentListByKeyCode(context, titleKeyCode);
+                if(mListContent != null && mListContent.size() > 0){
+                    typeContent = "BOOK_CONTENT_TITLE";
+                    for (int k=0; k<mListContent.size(); k++) {
+                        titleDetail = mListContent.get(k);
+                        mList.add(new Content(titleNumber, titleValue, titleKeyCode, titleDetail, subTitleNumber, subTitleValue, subTitleKeyCode, subTitleDetail, typeContent));
+                    }
+                }*/
+                //--
+                JSONArray jsonFilsArray = new JSONArray(jsonObject.getString("soustitre"));
+                if(jsonFilsArray.length() > 0){
+                    for(int j = 0; j < jsonFilsArray.length(); j++){
+                        JSONObject jsonFilsObject = jsonFilsArray.getJSONObject(j);
+                        typeContent = "SUMMARY_SUBTITLE";
+                        subTitleValue = jsonFilsObject.getString("sousTitreValue");
+                        subTitleNumber = jsonFilsObject.getString("sousTitreNumero");
+                        subTitleKeyCode = jsonFilsObject.getString("sousTitreKeyCode");
+                        mList.add(new Content(titleNumber, titleValue, titleKeyCode, titleDetail, subTitleNumber, subTitleValue, subTitleKeyCode, subTitleDetail, typeContent));
+                        //--
+                        /*mListContent = getContentListByKeyCode(context, subTitleKeyCode);
+                        if(mListContent != null && mListContent.size() > 0){
+                            typeContent = "BOOK_CONTENT_SUBTITLE";
+                            for (int k=0; k<mListContent.size(); k++) {
+                                titleDetail = mListContent.get(k);
+                                mList.add(new Content(titleNumber, titleValue, titleKeyCode, titleDetail, subTitleNumber, subTitleValue, subTitleKeyCode, subTitleDetail, typeContent));
+                            }
+                        }*/
+                        //--
+                    }
+                }
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return mList;
+    }
+
+    public static ArrayList<String> getContentListByKeyCode(Context context, String summaryKey){
+        ArrayList<String> mList = new ArrayList<>();
+        String srcFichier = "json/content.json";
+        try
+        {
+            JSONArray jsonArray = new JSONArray(loadJSONFromAsset(context, srcFichier));
+            for(int i = 0; i < jsonArray.length(); i++)
+            {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String keycode = new String(jsonObject.getString("keycode")); // To cast Int to String
+                String contenu = jsonObject.getString("contenu");
+                //--
+                if(keycode.equalsIgnoreCase(summaryKey)){
+                    JSONArray jsonFilsArray = new JSONArray(contenu);
+                    if(jsonFilsArray.length() > 0){
+                        for(int j = 0; j < jsonFilsArray.length(); j++){
+                            mList.add(jsonFilsArray.get(j).toString());
+                        }
+                    }
+                }
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return mList;
     }
 
     public static int[] getSummaryTextId() {

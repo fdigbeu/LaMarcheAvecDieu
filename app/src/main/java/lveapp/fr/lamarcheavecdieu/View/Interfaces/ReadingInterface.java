@@ -4,6 +4,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import lveapp.fr.lamarcheavecdieu.Model.Content;
 import lveapp.fr.lamarcheavecdieu.Model.Summary;
 
 /**
@@ -27,5 +28,11 @@ public class ReadingInterface {
          * @param summaryItems
          */
         public void displaySummaryContent(ArrayList<Summary> summaryItems);
+
+        /**
+         * Display detail of the book
+         * @param contentItems
+         */
+        public void displayBookContent(ArrayList<Content> contentItems);
     }
 }

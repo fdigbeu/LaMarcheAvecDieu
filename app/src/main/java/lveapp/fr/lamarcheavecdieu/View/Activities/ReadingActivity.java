@@ -19,10 +19,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import lveapp.fr.lamarcheavecdieu.Model.Content;
 import lveapp.fr.lamarcheavecdieu.Model.Summary;
 import lveapp.fr.lamarcheavecdieu.Presenter.CommonPresenter;
 import lveapp.fr.lamarcheavecdieu.Presenter.ReadingPresenter;
 import lveapp.fr.lamarcheavecdieu.R;
+import lveapp.fr.lamarcheavecdieu.View.Adapters.ContentItemsAdapter;
 import lveapp.fr.lamarcheavecdieu.View.Adapters.SummaryItemsAdapter;
 import lveapp.fr.lamarcheavecdieu.View.Interfaces.ReadingInterface.IReadingActivity;
 
@@ -35,7 +37,8 @@ public class ReadingActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private ReadingPresenter readingPresenter;
-    private RecyclerView recyclerView;
+    private RecyclerView menuSummary;
+    private RecyclerView bookContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,16 +128,27 @@ public class ReadingActivity extends AppCompatActivity
         toggle.syncState();
         
         //--
-        recyclerView=(RecyclerView)findViewById(R.id.menu_summary);
+        menuSummary=(RecyclerView)findViewById(R.id.menu_summary);
+        bookContent = (RecyclerView)findViewById(R.id.book_content);
     }
 
     @Override
     public void displaySummaryContent(ArrayList<Summary> summaryItems) {
         GridLayoutManager gridLayout = new GridLayoutManager(ReadingActivity.this, 1);
-        recyclerView.setLayoutManager(gridLayout);
-        recyclerView.setHasFixedSize(true);
+        menuSummary.setLayoutManager(gridLayout);
+        menuSummary.setHasFixedSize(true);
 
         SummaryItemsAdapter mAdapter = new SummaryItemsAdapter(ReadingActivity.this, summaryItems, drawer);
-        recyclerView.setAdapter(mAdapter);
+        menuSummary.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void displayBookContent(ArrayList<Content> contentItems) {
+        GridLayoutManager gridLayout = new GridLayoutManager(ReadingActivity.this, 1);
+        bookContent.setLayoutManager(gridLayout);
+        bookContent.setHasFixedSize(true);
+
+        ContentItemsAdapter mAdapter = new ContentItemsAdapter(ReadingActivity.this, contentItems);
+        bookContent.setAdapter(mAdapter);
     }
 }
